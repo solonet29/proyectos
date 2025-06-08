@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Community Manager - Andalucía Flamenco Land</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header con resumen semanal -->
+        <header class="dashboard-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="brand-section">
+                        <h1>Andalucía Flamenco Land</h1>
+                        <p class="subtitle">Dashboard Community Manager</p>
+                    </div>
+                    
+                    <div class="week-summary">
+                        <div class="week-info">
+                            <span class="week-label">Semana del</span>
+                            <span class="week-dates" id="weekDates"></span>
+                        </div>
+                        
+                        <div class="progress-section">
+                            <div class="progress-header">
+                                <span class="progress-label">Progreso General</span>
+                                <span class="progress-percentage" id="overallProgress">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn--secondary reset-btn" id="resetWeekBtn">
+                            Nueva Semana
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navegación por pestañas -->
+        <nav class="tab-navigation">
+            <div class="container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="instagram">
+                        <span class="tab-icon">📷</span>
+                        Instagram
+                        <span class="tab-progress" id="instagram-progress">0%</span>
+                    </button>
+                    <button class="tab-btn" data-tab="tiktok">
+                        <span class="tab-icon">🎵</span>
+                        TikTok
+                        <span class="tab-progress" id="tiktok-progress">0%</span>
+                    </button>
+                    <button class="tab-btn" data-tab="facebook">
+                        <span class="tab-icon">👥</span>
+                        Facebook
+                        <span class="tab-progress" id="facebook-progress">0%</span>
+                    </button>
+                    <button class="tab-btn" data-tab="youtube">
+                        <span class="tab-icon">🎥</span>
+                        YouTube
+                        <span class="tab-progress" id="youtube-progress">0%</span>
+                    </button>
+                    <button class="tab-btn" data-tab="general">
+                        <span class="tab-icon">⚙️</span>
+                        General
+                        <span class="tab-progress" id="general-progress">0%</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenido de las pestañas -->
+        <main class="dashboard-main">
+            <div class="container">
+                <!-- Instagram Section -->
+                <div class="tab-content active" id="instagram-content">
+                    <div class="section-header">
+                        <h2>Instagram - Contenido Principal</h2>
+                        <span class="section-weight">35% del contenido total</span>
+                    </div>
+                    <div class="tasks-grid" id="instagram-tasks"></div>
+                </div>
+
+                <!-- TikTok Section -->
+                <div class="tab-content" id="tiktok-content">
+                    <div class="section-header">
+                        <h2>TikTok - Contenido Viral</h2>
+                        <span class="section-weight">32% del contenido total</span>
+                    </div>
+                    <div class="tasks-grid" id="tiktok-tasks"></div>
+                </div>
+
+                <!-- Facebook Section -->
+                <div class="tab-content" id="facebook-content">
+                    <div class="section-header">
+                        <h2>Facebook - Comunidad y Eventos</h2>
+                        <span class="section-weight">22% del contenido total</span>
+                    </div>
+                    <div class="tasks-grid" id="facebook-tasks"></div>
+                </div>
+
+                <!-- YouTube Section -->
+                <div class="tab-content" id="youtube-content">
+                    <div class="section-header">
+                        <h2>YouTube - Contenido Educativo</h2>
+                        <span class="section-weight">11% del contenido total</span>
+                    </div>
+                    <div class="tasks-grid" id="youtube-tasks"></div>
+                </div>
+
+                <!-- General Section -->
+                <div class="tab-content" id="general-content">
+                    <div class="section-header">
+                        <h2>Tareas Generales</h2>
+                        <span class="section-weight">Gestión y análisis</span>
+                    </div>
+                    <div class="tasks-grid" id="general-tasks"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
