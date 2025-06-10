@@ -3,127 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard Community Manager - Andalucía Flamenco Land</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    h1 { color: #b22222; }
-    h2 { margin-top: 2em; }
-    .seccion { margin-bottom: 2em; }
-    .tarea { margin-bottom: 0.5em; }
-    .completada { text-decoration: line-through; color: #888; }
-    .barra-progreso {
-      background: #eee; border-radius: 6px; height: 20px; width: 300px; margin-bottom: 1em;
-      overflow: hidden; box-shadow: 0 1px 2px #ccc inset;
-    }
-    .progreso {
-      background: #b22222; height: 100%; transition: width 0.3s;
-    }
-  </style>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-  <h1>Dashboard Community Manager</h1>
-  <h3>Andalucía Flamenco Land – Control Semanal de Tareas</h3>
+  <header>
+    <h1>Dashboard Community Manager</h1>
+    <h2>Andalucía Flamenco Land</h2>
+    <p>Control semanal de tareas por plataforma</p>
+  </header>
 
-  <div id="resumen"></div>
+  <main>
+    <section id="resumen-global">
+      <h3>Resumen Semanal</h3>
+      <div id="barra-progreso-global" class="barra-progreso">
+        <div id="progreso-global" class="progreso"></div>
+      </div>
+      <div id="texto-resumen"></div>
+      <button id="reset-btn">Nueva Semana (Reset)</button>
+    </section>
 
-  <div class="seccion" id="instagram">
-    <h2>Instagram</h2>
-    <div class="tarea"><input type="checkbox" id="ig1"> Publicar 1 post temático</div>
-    <div class="tarea"><input type="checkbox" id="ig2"> Crear 2 stories interactivas</div>
-    <div class="tarea"><input type="checkbox" id="ig3"> Subir 1 reel viral</div>
-    <div class="tarea"><input type="checkbox" id="ig4"> Responder comentarios</div>
-    <div class="tarea"><input type="checkbox" id="ig5"> Analizar métricas semanales</div>
-  </div>
+    <section class="seccion" id="instagram">
+      <h3><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="icono"> Instagram</h3>
+      <ul>
+        <li><input type="checkbox" id="ig1" class="tarea"> Publicar 1 post temático</li>
+        <li><input type="checkbox" id="ig2" class="tarea"> Crear 2 stories interactivas</li>
+        <li><input type="checkbox" id="ig3" class="tarea"> Subir 1 reel viral</li>
+        <li><input type="checkbox" id="ig4" class="tarea"> Responder comentarios</li>
+        <li><input type="checkbox" id="ig5" class="tarea"> Analizar métricas semanales</li>
+      </ul>
+    </section>
 
-  <div class="seccion" id="tiktok">
-    <h2>TikTok</h2>
-    <div class="tarea"><input type="checkbox" id="tt1"> Publicar video de tendencia</div>
-    <div class="tarea"><input type="checkbox" id="tt2"> Participar en challenge</div>
-    <div class="tarea"><input type="checkbox" id="tt3"> Responder mensajes</div>
-    <div class="tarea"><input type="checkbox" id="tt4"> Analizar hashtags virales</div>
-  </div>
+    <section class="seccion" id="tiktok">
+      <h3><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" class="icono"> TikTok</h3>
+      <ul>
+        <li><input type="checkbox" id="tt1" class="tarea"> Publicar video de tendencia</li>
+        <li><input type="checkbox" id="tt2" class="tarea"> Participar en challenge</li>
+        <li><input type="checkbox" id="tt3" class="tarea"> Responder mensajes</li>
+        <li><input type="checkbox" id="tt4" class="tarea"> Analizar hashtags virales</li>
+      </ul>
+    </section>
 
-  <div class="seccion" id="facebook">
-    <h2>Facebook</h2>
-    <div class="tarea"><input type="checkbox" id="fb1"> Publicar contenido educativo</div>
-    <div class="tarea"><input type="checkbox" id="fb2"> Gestionar grupo privado</div>
-    <div class="tarea"><input type="checkbox" id="fb3"> Crear evento virtual</div>
-  </div>
+    <section class="seccion" id="facebook">
+      <h3><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="icono"> Facebook</h3>
+      <ul>
+        <li><input type="checkbox" id="fb1" class="tarea"> Publicar contenido educativo</li>
+        <li><input type="checkbox" id="fb2" class="tarea"> Gestionar grupo privado</li>
+        <li><input type="checkbox" id="fb3" class="tarea"> Crear evento virtual</li>
+      </ul>
+    </section>
 
-  <div class="seccion" id="youtube">
-    <h2>YouTube</h2>
-    <div class="tarea"><input type="checkbox" id="yt1"> Subir video educativo</div>
-    <div class="tarea"><input type="checkbox" id="yt2"> Optimizar título y descripción</div>
-  </div>
+    <section class="seccion" id="youtube">
+      <h3><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" class="icono"> YouTube</h3>
+      <ul>
+        <li><input type="checkbox" id="yt1" class="tarea"> Subir video educativo</li>
+        <li><input type="checkbox" id="yt2" class="tarea"> Optimizar título y descripción</li>
+      </ul>
+    </section>
+  </main>
 
-  <button onclick="resetTareas()">Nueva Semana (Reset)</button>
+  <footer>
+    <p>&copy; 2025 Andalucía Flamenco Land. Dashboard desarrollado para gestión profesional de redes sociales.</p>
+  </footer>
 
-  <script>
-    // Guardar el estado de los checkboxes en localStorage
-    function saveCheckboxStates() {
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      let state = {};
-      checkboxes.forEach((checkbox) => {
-        state[checkbox.id] = checkbox.checked;
-      });
-      localStorage.setItem('dashboardTareas', JSON.stringify(state));
-      updateResumen();
-    }
-
-    // Cargar el estado de los checkboxes desde localStorage
-    function loadCheckboxStates() {
-      const state = JSON.parse(localStorage.getItem('dashboardTareas') || '{}');
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      checkboxes.forEach((checkbox) => {
-        if (state.hasOwnProperty(checkbox.id)) {
-          checkbox.checked = state[checkbox.id];
-        }
-        updateTareaVisual(checkbox);
-      });
-      updateResumen();
-    }
-
-    // Actualizar el estilo visual de la tarea completada
-    function updateTareaVisual(checkbox) {
-      if (checkbox.checked) {
-        checkbox.parentElement.classList.add('completada');
-      } else {
-        checkbox.parentElement.classList.remove('completada');
-      }
-    }
-
-    // Actualizar resumen y barra de progreso
-    function updateResumen() {
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      const total = checkboxes.length;
-      let completadas = 0;
-      checkboxes.forEach(cb => { if (cb.checked) completadas++; });
-      const porcentaje = Math.round((completadas / total) * 100);
-      document.getElementById('resumen').innerHTML =
-        `<b>Progreso semanal:</b> ${completadas} de ${total} tareas (${porcentaje}%)<br>
-        <div class="barra-progreso"><div class="progreso" style="width:${porcentaje}%;"></div></div>`;
-    }
-
-    // Resetear todas las tareas y limpiar localStorage
-    function resetTareas() {
-      if (confirm('¿Seguro que quieres reiniciar todas las tareas para una nueva semana?')) {
-        localStorage.removeItem('dashboardTareas');
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(cb => { cb.checked = false; updateTareaVisual(cb); });
-        updateResumen();
-      }
-    }
-
-    // Asignar eventos a los checkboxes
-    document.addEventListener('DOMContentLoaded', function() {
-      loadCheckboxStates();
-      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-          updateTareaVisual(checkbox);
-          saveCheckboxStates();
-        });
-      });
-    });
-  </script>
+  <script src="aplicacion.js"></script>
 </body>
 </html>
-
