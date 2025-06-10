@@ -1,130 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Community Manager - Andalucía Flamenco Land</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Dashboard Community Manager - Andalucía Flamenco Land</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { color: #b22222; }
+    h2 { margin-top: 2em; }
+    .seccion { margin-bottom: 2em; }
+    .tarea { margin-bottom: 0.5em; }
+    .completada { text-decoration: line-through; color: #888; }
+    .barra-progreso {
+      background: #eee; border-radius: 6px; height: 20px; width: 300px; margin-bottom: 1em;
+      overflow: hidden; box-shadow: 0 1px 2px #ccc inset;
+    }
+    .progreso {
+      background: #b22222; height: 100%; transition: width 0.3s;
+    }
+  </style>
 </head>
 <body>
-    <div class="dashboard-container">
-        <!-- Header con resumen semanal -->
-        <header class="dashboard-header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="brand-section">
-                        <h1>Andalucía Flamenco Land</h1>
-                        <p class="subtitle">Dashboard Community Manager</p>
-                    </div>
-                    
-                    <div class="week-summary">
-                        <div class="week-info">
-                            <span class="week-label">Semana del</span>
-                            <span class="week-dates" id="weekDates"></span>
-                        </div>
-                        
-                        <div class="progress-section">
-                            <div class="progress-header">
-                                <span class="progress-label">Progreso General</span>
-                                <span class="progress-percentage" id="overallProgress">0%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="progressFill"></div>
-                            </div>
-                        </div>
-                        
-                        <button class="btn btn--secondary reset-btn" id="resetWeekBtn">
-                            Nueva Semana
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
+  <h1>Dashboard Community Manager</h1>
+  <h3>Andalucía Flamenco Land – Control Semanal de Tareas</h3>
 
-        <!-- Navegación por pestañas -->
-        <nav class="tab-navigation">
-            <div class="container">
-                <div class="tab-buttons">
-                    <button class="tab-btn active" data-tab="instagram">
-                        <span class="tab-icon">📷</span>
-                        Instagram
-                        <span class="tab-progress" id="instagram-progress">0%</span>
-                    </button>
-                    <button class="tab-btn" data-tab="tiktok">
-                        <span class="tab-icon">🎵</span>
-                        TikTok
-                        <span class="tab-progress" id="tiktok-progress">0%</span>
-                    </button>
-                    <button class="tab-btn" data-tab="facebook">
-                        <span class="tab-icon">👥</span>
-                        Facebook
-                        <span class="tab-progress" id="facebook-progress">0%</span>
-                    </button>
-                    <button class="tab-btn" data-tab="youtube">
-                        <span class="tab-icon">🎥</span>
-                        YouTube
-                        <span class="tab-progress" id="youtube-progress">0%</span>
-                    </button>
-                    <button class="tab-btn" data-tab="general">
-                        <span class="tab-icon">⚙️</span>
-                        General
-                        <span class="tab-progress" id="general-progress">0%</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
+  <div id="resumen"></div>
 
-        <!-- Contenido de las pestañas -->
-        <main class="dashboard-main">
-            <div class="container">
-                <!-- Instagram Section -->
-                <div class="tab-content active" id="instagram-content">
-                    <div class="section-header">
-                        <h2>Instagram - Contenido Principal</h2>
-                        <span class="section-weight">35% del contenido total</span>
-                    </div>
-                    <div class="tasks-grid" id="instagram-tasks"></div>
-                </div>
+  <div class="seccion" id="instagram">
+    <h2>Instagram</h2>
+    <div class="tarea"><input type="checkbox" id="ig1"> Publicar 1 post temático</div>
+    <div class="tarea"><input type="checkbox" id="ig2"> Crear 2 stories interactivas</div>
+    <div class="tarea"><input type="checkbox" id="ig3"> Subir 1 reel viral</div>
+    <div class="tarea"><input type="checkbox" id="ig4"> Responder comentarios</div>
+    <div class="tarea"><input type="checkbox" id="ig5"> Analizar métricas semanales</div>
+  </div>
 
-                <!-- TikTok Section -->
-                <div class="tab-content" id="tiktok-content">
-                    <div class="section-header">
-                        <h2>TikTok - Contenido Viral</h2>
-                        <span class="section-weight">32% del contenido total</span>
-                    </div>
-                    <div class="tasks-grid" id="tiktok-tasks"></div>
-                </div>
+  <div class="seccion" id="tiktok">
+    <h2>TikTok</h2>
+    <div class="tarea"><input type="checkbox" id="tt1"> Publicar video de tendencia</div>
+    <div class="tarea"><input type="checkbox" id="tt2"> Participar en challenge</div>
+    <div class="tarea"><input type="checkbox" id="tt3"> Responder mensajes</div>
+    <div class="tarea"><input type="checkbox" id="tt4"> Analizar hashtags virales</div>
+  </div>
 
-                <!-- Facebook Section -->
-                <div class="tab-content" id="facebook-content">
-                    <div class="section-header">
-                        <h2>Facebook - Comunidad y Eventos</h2>
-                        <span class="section-weight">22% del contenido total</span>
-                    </div>
-                    <div class="tasks-grid" id="facebook-tasks"></div>
-                </div>
+  <div class="seccion" id="facebook">
+    <h2>Facebook</h2>
+    <div class="tarea"><input type="checkbox" id="fb1"> Publicar contenido educativo</div>
+    <div class="tarea"><input type="checkbox" id="fb2"> Gestionar grupo privado</div>
+    <div class="tarea"><input type="checkbox" id="fb3"> Crear evento virtual</div>
+  </div>
 
-                <!-- YouTube Section -->
-                <div class="tab-content" id="youtube-content">
-                    <div class="section-header">
-                        <h2>YouTube - Contenido Educativo</h2>
-                        <span class="section-weight">11% del contenido total</span>
-                    </div>
-                    <div class="tasks-grid" id="youtube-tasks"></div>
-                </div>
+  <div class="seccion" id="youtube">
+    <h2>YouTube</h2>
+    <div class="tarea"><input type="checkbox" id="yt1"> Subir video educativo</div>
+    <div class="tarea"><input type="checkbox" id="yt2"> Optimizar título y descripción</div>
+  </div>
 
-                <!-- General Section -->
-                <div class="tab-content" id="general-content">
-                    <div class="section-header">
-                        <h2>Tareas Generales</h2>
-                        <span class="section-weight">Gestión y análisis</span>
-                    </div>
-                    <div class="tasks-grid" id="general-tasks"></div>
-                </div>
-            </div>
-        </main>
-    </div>
+  <button onclick="resetTareas()">Nueva Semana (Reset)</button>
 
-    <script src="app.js"></script>
+  <script>
+    // Guardar el estado de los checkboxes en localStorage
+    function saveCheckboxStates() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let state = {};
+      checkboxes.forEach((checkbox) => {
+        state[checkbox.id] = checkbox.checked;
+      });
+      localStorage.setItem('dashboardTareas', JSON.stringify(state));
+      updateResumen();
+    }
+
+    // Cargar el estado de los checkboxes desde localStorage
+    function loadCheckboxStates() {
+      const state = JSON.parse(localStorage.getItem('dashboardTareas') || '{}');
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach((checkbox) => {
+        if (state.hasOwnProperty(checkbox.id)) {
+          checkbox.checked = state[checkbox.id];
+        }
+        updateTareaVisual(checkbox);
+      });
+      updateResumen();
+    }
+
+    // Actualizar el estilo visual de la tarea completada
+    function updateTareaVisual(checkbox) {
+      if (checkbox.checked) {
+        checkbox.parentElement.classList.add('completada');
+      } else {
+        checkbox.parentElement.classList.remove('completada');
+      }
+    }
+
+    // Actualizar resumen y barra de progreso
+    function updateResumen() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const total = checkboxes.length;
+      let completadas = 0;
+      checkboxes.forEach(cb => { if (cb.checked) completadas++; });
+      const porcentaje = Math.round((completadas / total) * 100);
+      document.getElementById('resumen').innerHTML =
+        `<b>Progreso semanal:</b> ${completadas} de ${total} tareas (${porcentaje}%)<br>
+        <div class="barra-progreso"><div class="progreso" style="width:${porcentaje}%;"></div></div>`;
+    }
+
+    // Resetear todas las tareas y limpiar localStorage
+    function resetTareas() {
+      if (confirm('¿Seguro que quieres reiniciar todas las tareas para una nueva semana?')) {
+        localStorage.removeItem('dashboardTareas');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(cb => { cb.checked = false; updateTareaVisual(cb); });
+        updateResumen();
+      }
+    }
+
+    // Asignar eventos a los checkboxes
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCheckboxStates();
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          updateTareaVisual(checkbox);
+          saveCheckboxStates();
+        });
+      });
+    });
+  </script>
 </body>
 </html>
+
